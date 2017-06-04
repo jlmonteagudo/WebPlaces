@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { FirebaseService } from '../common/firebase.service';
 import { Area } from './area';
 import * as firebase from 'firebase';
+import * as _ from 'lodash';
+
 
 @Injectable()
 export class AreaService extends FirebaseService {
@@ -40,9 +42,18 @@ export class AreaService extends FirebaseService {
     return super.actionAsObservable(action);
   }
 
-  uploadImage(area: Area, files: File[]): void {
+
+  uploadImages(area: Area, files: File[] | File): void {
+    if (files instanceof FileList) {
+      _.each(files, (file) => this.uploadImage(area, file));
+    } else {
+      this.uploadImage(area, files);
+    }
+  }  
+
+  uploadImage(area: Area, file: any): void {
     let storageRef: firebase.storage.Reference = firebase.storage().ref();
-    let uploadTask: firebase.storage.UploadTask = storageRef.child(`areas/images/${files[0].name}`).put(files[0]);
+    let uploadTask: firebase.storage.UploadTask = storageRef.child(`areas/images/${file.name}`).put(file);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => { console.log('Area files uploaded'); },

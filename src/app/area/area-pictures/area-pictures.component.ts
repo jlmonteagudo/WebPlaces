@@ -29,7 +29,7 @@ export class AreaPicturesComponent implements OnInit {
   }
 
   uploadFiles(files) {
-    this.areaService.uploadImage(this.area, files);
+    this.areaService.uploadImages(this.area, files);
     this.enableUpload = false;
   }
 
