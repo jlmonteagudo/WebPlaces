@@ -33,7 +33,7 @@
       <tr td-data-table-row *ngFor="let place of places$ | async">
 
         <td td-data-table-cell>
-          <img class="avatar" [src]="place.images[0]" *ngIf="place.images">
+          <img class="avatar" [src]="place.images[0]" *ngIf="place.images[0]">
         </td>
         <td td-data-table-cell>
           <a md-button class="text-upper" [routerLink]="place.$key">{{place.title}}</a>
