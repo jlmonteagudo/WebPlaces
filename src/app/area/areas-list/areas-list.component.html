@@ -1,0 +1,48 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+  <md-card-title>Areas</md-card-title>
+
+  <md-divider></md-divider>
+
+  <md-list>
+    <ng-template let-area let-last="last" ngFor [ngForOf]="areas$ | async">
+      <md-list-item>
+
+        <img md-list-avatar [src]="area.imageUrl">
+        <a md-button class="text-upper" [routerLink]="area.$key">{{area.title}}</a>
+        <span flex></span>
+
+        <span>
+
+            <button md-icon-button [md-menu-trigger-for]="menu">
+              <md-icon>more_vert</md-icon>
+            </button>
+
+            <md-menu x-position="before" #menu="mdMenu">
+
+              <a routerLink="{{area.$key}}/edit" md-menu-item>
+                <md-icon>edit</md-icon>
+                Edit
+              </a>
+
+              <a routerLink="{{area.$key}}/pictures" md-menu-item>
+                <md-icon>camera_alt</md-icon>
+                Pictures
+              </a>
+
+              <a (click)="delete(area)" md-menu-item>
+                <md-icon>delete</md-icon>
+                Delete
+              </a>
+
+            </md-menu>
+
+        </span>
+
+      </md-list-item>
+      <md-divider *ngIf="!last" md-inset></md-divider>
+    </ng-template>
+
+  </md-list>
+
+</md-card>

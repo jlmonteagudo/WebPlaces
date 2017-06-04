@@ -1,0 +1,12 @@
+form md-icon {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.md-content {
+  background-color: #f1f1f1;
+}
+
+md-card-content {
+  padding: 50px !important;
+}

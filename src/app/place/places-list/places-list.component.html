@@ -1,0 +1,78 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+  <md-card-title>Places</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+
+    <div class="area-filter">
+      <span>Filter by area:</span>
+      <md-select placeholder="Area" (change)="filterByArea($event)" [(ngModel)]="selectedAreaId">
+        <md-option *ngFor="let area of areas$ | async" [value]="area.$key">{{area.title}}</md-option>
+      </md-select>
+    </div>
+
+    <table td-data-table>
+
+      <th td-data-table-column>
+        Image
+      </th>
+      <th td-data-table-column>
+        Title
+      </th>
+      <th td-data-table-column>
+        Excerpt
+      </th>
+      <th td-data-table-column [numeric]="true">
+        Priority
+      </th>
+      <th td-data-table-column>
+        Actions
+      </th>
+
+      <tr td-data-table-row *ngFor="let place of places$ | async">
+
+        <td td-data-table-cell>
+          <img class="avatar" [src]="place.images[0]" *ngIf="place.images">
+        </td>
+        <td td-data-table-cell>
+          <a md-button class="text-upper" [routerLink]="place.$key">{{place.title}}</a>
+        </td>
+        <td td-data-table-cell>
+          {{place.excerpt}}
+        </td>
+        <td td-data-table-cell [numeric]="true">
+          {{place.priority}}
+        </td>
+
+        <td td-data-table-cell>
+          <span>
+            <button md-icon-button [md-menu-trigger-for]="menu">
+              <md-icon>more_vert</md-icon>
+            </button>
+
+            <md-menu x-position="before" #menu="mdMenu">
+              <a routerLink="{{place.$key}}/edit" md-menu-item>
+                <md-icon>edit</md-icon>
+                Edit
+              </a>
+              <a routerLink="{{place.$key}}/pictures" md-menu-item>
+                <md-icon>camera_alt</md-icon>
+                Pictures
+              </a>
+              <a (click)="delete(place)" md-menu-item>
+                <md-icon>delete</md-icon>
+                Delete
+              </a>
+            </md-menu>
+          </span>
+        </td>
+
+      </tr>
+
+    </table>
+
+  </md-card-content>
+
+</md-card>
+

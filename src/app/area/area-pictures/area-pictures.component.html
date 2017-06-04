@@ -1,0 +1,39 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>Manage Pictures</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <h1>{{area?.title}}</h1>
+
+    <div class="actions">
+
+      <button md-raised-button color="primary" (click)="enableUploadMorePictures()" *ngIf="!enableUpload">
+        <md-icon>add_circle</md-icon>
+        Upload More Pictures
+      </button>
+
+      <td-file-upload #fileMultipleUpload (upload)="uploadFiles($event)" accept=".jpg" defaultColor="accent" activeColor="warn" cancelColor="primary" multiple [disabled]="!enableUpload">
+        <md-icon>file_upload</md-icon>
+        <span>
+          {{ fileMultipleUpload.files?.name || fileMultipleUpload.files?.length }} <span *ngIf="fileMultipleUpload.files?.length">files selected</span>
+        </span>
+        <ng-template td-file-input-label>
+          <md-icon>attach_file</md-icon><span>Select pictures to upload (only .jpg files)...</span>
+        </ng-template>
+      </td-file-upload>
+      
+    </div>
+
+    <img [src]="area.imageUrl" *ngIf="area.imageUrl"/>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions>
+    <a md-raised-button routerLink="/areas">
+      <md-icon color="warn">cancel</md-icon>
+      Exit
+    </a>
+  </md-card-actions>
+
+</md-card>

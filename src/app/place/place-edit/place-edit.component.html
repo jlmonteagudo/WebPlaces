@@ -1,0 +1,22 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>Update Place</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <place-form #placeFormComponent [initialValue]="place"></place-form>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions>
+    <button md-raised-button [disabled]="!placeFormComponent.form.valid" (click)="update(placeFormComponent.form)" color="primary">
+      <md-icon>update</md-icon>
+      Update Place
+    </button>
+
+    <button md-raised-button (click)="cancel()">
+      <md-icon color="warn">cancel</md-icon>
+      Cancel
+    </button>
+  </md-card-actions>
+
+</md-card>

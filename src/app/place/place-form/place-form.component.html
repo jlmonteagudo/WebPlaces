@@ -1,0 +1,47 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+
+  <md-select placeholder="Area" name="areaId" formControlName="areaId">
+    <md-option *ngFor="let area of areas" [value]="area.$key">{{area.title}}</md-option>
+  </md-select>
+
+  <md-input-container>
+    <input mdInput placeholder="Title" name="title" formControlName="title">
+  </md-input-container>
+
+  <div class="editor">
+    <p>Description:</p>
+    <quill-editor #description formControlName="description" [modules]="{toolbar: [[{ header: [1, 2, false] }], ['bold', 'italic'], [{ 'color': [] }, { 'background': [] }]]}"></quill-editor>
+  </div>
+
+  <md-input-container>
+    <input mdInput placeholder="Excerpt" name="excerpt" formControlName="excerpt">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Address" name="address" formControlName="address">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="number" placeholder="Priority" name="priority" formControlName="priority">
+  </md-input-container>
+
+
+  <table cellspacing="0">
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput type="number" placeholder="Latitude" name="latitude" formControlName="latitude">
+        </md-input-container></td>
+      <td>
+        <md-input-container>
+          <input mdInput type="number" placeholder="Longitude" name="longitude" formControlName="longitude">
+        </md-input-container></td>
+    </tr>
+  </table>
+
+  <agm-map [latitude]="form?.value?.latitude" [longitude]="form?.value?.longitude" [zoom]="17" (mapClick)="mapClick($event)">
+    <agm-marker [latitude]="marker?.latitude" [longitude]="marker?.longitude" [markerDraggable]="marker?.isDraggable" (dragEnd)="dragEnd($event)" *ngIf="marker">
+    </agm-marker>
+  </agm-map>
+
+</form>

@@ -1,0 +1,23 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>{{area.title}}</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <h3>Pictures</h3>
+    <img [src]="area.imageUrl" *ngIf="area.imageUrl"/>
+
+    <h3>Map</h3>
+    <agm-map [latitude]="area.latitude" [longitude]="area.longitude" [zoom]="17">
+      <agm-marker [latitude]="area.latitude" [longitude]="area.longitude"></agm-marker>
+    </agm-map>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions>
+    <a md-raised-button routerLink="/areas" color="primary">
+      <md-icon>list</md-icon>Areas
+    </a>
+  </md-card-actions>
+
+</md-card>

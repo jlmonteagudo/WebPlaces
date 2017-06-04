@@ -1,0 +1,22 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>New Area</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <area-form #areaFormComponent></area-form>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions>
+    <button md-raised-button [disabled]="!areaFormComponent.form.valid" (click)="save(areaFormComponent.form)" color="primary">
+      <md-icon>add</md-icon>
+      New Area
+    </button>
+
+    <button md-raised-button (click)="cancel()">
+      <md-icon color="warn">cancel</md-icon>
+      Cancel
+    </button>
+  </md-card-actions>
+
+</md-card>

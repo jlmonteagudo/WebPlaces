@@ -1,0 +1,23 @@
+<td-layout-nav-list #navList
+                  toolbarTitle="Places"
+                  [opened]="media.registerQuery('gt-sm') | async"
+                  [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+                  [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '300px' : '100%'">
+
+  <md-nav-list td-sidenav-content>
+    <app-sidenav-list></app-sidenav-list>
+  </md-nav-list>
+
+  
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Places</span>
+    <span flex></span>
+  </div>
+
+  <router-outlet></router-outlet>
+  
+</td-layout-nav-list>
+
+<a md-fab color="accent" class="mat-fab-bottom-right" routerLink="new" *ngIf="router.url === '/places'">
+  <md-icon>add</md-icon>
+</a>

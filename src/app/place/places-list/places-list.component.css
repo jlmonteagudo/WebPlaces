@@ -1,0 +1,20 @@
+.place-table {
+  margin-top: 30px;
+  border-spacing: 25px;
+}
+
+.area-filter {
+  margin: 20px 0px !important;
+}
+
+.area-filter span {
+  margin: 0px 10px 0px 40px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+}

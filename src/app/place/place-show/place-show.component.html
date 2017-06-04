@@ -1,0 +1,32 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>{{place.title}}</md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+
+    <h3>Excerpt</h3>
+    {{place.excerpt}}
+
+    <h3>Description</h3>
+    <div [innerHTML]="place.description"></div>
+
+    <h3>Pictures</h3>
+    <img *ngFor="let image of place.images" [src]="image"/>
+
+    <h3>Map</h3>
+    <agm-map [latitude]="place.latitude" [longitude]="place.longitude" [zoom]="17">
+      <agm-marker [latitude]="place.latitude" [longitude]="place.longitude"></agm-marker>
+    </agm-map>
+
+    <h3>Priority: {{place.priority}}</h3>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions>
+    <a md-raised-button routerLink="/places" color="primary">
+      <md-icon>list</md-icon>Places
+    </a>
+  </md-card-actions>
+
+</md-card>

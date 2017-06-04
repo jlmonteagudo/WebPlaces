@@ -1,0 +1,35 @@
+<div layout="column" layout-fill>
+
+  <div class="md-content" layout-padding flex>
+    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+      <div flex-gt-xs="50">
+        <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+          <md-card-title><md-icon>security</md-icon> Login</md-card-title>
+          <md-divider></md-divider>
+          <md-card-content>
+            <form [formGroup]="form" autocomplete="off" novalidate class="login-form">
+              <div layout="row">
+                <md-input-container flex> 
+                  <input mdInput placeholder="Email" name="email" formControlName="email">
+                  <span md-prefix><md-icon>person</md-icon></span>
+                </md-input-container>
+              </div>
+              <div layout="row">
+                <md-input-container flex> 
+                  <input mdInput type="password" placeholder="Password" name="password" formControlName="password">
+                  <span md-prefix><md-icon>lock</md-icon></span>
+                </md-input-container>
+              </div>
+            </form>
+          </md-card-content>
+          <md-divider></md-divider>
+          <md-card-actions layout="row">
+            <button md-raised-button (click)="login()" color="primary">
+              <md-icon>security</md-icon>
+              Login
+            </button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </div>

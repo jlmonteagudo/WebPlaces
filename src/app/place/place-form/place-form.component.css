@@ -1,0 +1,24 @@
+
+form {
+  margin-top: 20px;
+  width: 640px;
+}
+
+table, md-input-container, md-select {
+  width: 100%;
+}
+
+.sebm-google-map-container {
+  width: 640px;
+  height: 400px;
+}
+
+.editor {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.editor p {
+  margin-bottom: 15px; 
+  color: rgba(0, 0, 0, 0.38);
+}
