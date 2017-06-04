@@ -10,4 +10,4 @@ export const MARKER_DEFAULT_CONFIG: Marker = {
 
 export let MARKER_DEFAULT_CONFIG_PROVIDER = new InjectionToken<Marker>('marker.default.config');
 
-export const GOOGLE_MAPS_API_KEY = 'AIzaSyAfwNFzdHPW8R4NWuHTNJE1fMxFZtPgsZ8';
+export const GOOGLE_MAPS_API_KEY = 'YOUR API KEY';
